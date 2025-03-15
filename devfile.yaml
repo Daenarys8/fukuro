@@ -1,0 +1,21 @@
+schemaVersion: 2.0.0
+metadata:
+  name: python-react-app
+  version: 1.0.0
+components:
+  - name: dev
+    container:
+      image: public.ecr.aws/aws-mde/universal-image:latest
+commands:
+  - id: install
+    exec:
+      component: dev
+      commandLine: "cd system && pip install -r requirements.txt && cd ../user && npm install"
+  - id: build
+    exec:
+      component: dev
+      commandLine: "cd user && npm run build"
+  - id: test
+    exec:
+      component: dev
+      commandLine: "cd system && python -m pytest && cd ../user && npm run test"

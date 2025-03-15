@@ -1,0 +1,17 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "anomaly_detections" [ label = "anomaly_detections
+(AWS::RDS::DBTable)", shape =cylinder, fillcolor = "#FFCFB3" ];
+  "response_actions" [ label = "response_actions
+(AWS::RDS::DBTable)", shape =cylinder, fillcolor = "#FFCFB3" ];
+  "security_logs" [ label = "security_logs
+(AWS::RDS::DBTable)", shape =cylinder, fillcolor = "#FFCFB3" ];
+  "PostgreSQL Database" [ label = "PostgreSQL Database
+(AWS::RDS::DBInstance)", shape =cylinder, fillcolor = "#FFCFB3" ];
+  "Application Server" [ label = "Application Server
+(AWS::EC2::Instance)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "PostgreSQL Database" -> "anomaly_detections";
+  "PostgreSQL Database" -> "response_actions";
+  "PostgreSQL Database" -> "security_logs";
+  "Application Server" -> "PostgreSQL Database";
+}
